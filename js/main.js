@@ -215,11 +215,18 @@
 
 	var iAmAttending = function () {
 		$("#iAmAttending").click(function () {
+			$("#iAmAttending").html('Sending RSVP...');
 			emailjs.sendForm('service_f9h3uae', 'template_m0b48gw', '#iAmAttendingForm')
 				.then(function (response) {
 					console.log('SUCCESS!', response.status, response.text);
+					$("#name").prop('readonly', 'readonly');
+					$("#email").prop('readonly', 'readonly');
+					$("#iAmAttending").html('Thanks for RSVP!');
+					location.replace("#");
+					location.reload();
 				}, function (error) {
 					console.log('FAILED...', error);
+					$("#iAmAttending").html('Error sending RSVP...');
 				});
 		});
 	}
