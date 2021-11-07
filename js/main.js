@@ -212,25 +212,39 @@
 	var parallax = function () {
 		$(window).stellar();
 	};
+	var parseJwt = function parseJwt(token) {
+		var base64Url = token.split('.')[1];
+		var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+		var jsonPayload = decodeURIComponent(atob(base64).split('').map(function (c) {
+			return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+		}).join(''));
+		return JSON.parse(jsonPayload);
+	};
 
 	var iAmAttending = function () {
 		$("#iAmAttending").click(function () {
-			$("#iAmAttending").html('Sending RSVP...');
-			emailjs.sendForm('service_f9h3uae', 'template_m0b48gw', '#iAmAttendingForm')
-				.then(function (response) {
-					console.log('SUCCESS!', response.status, response.text);
-					$("#name").prop('readonly', 'readonly');
-					$("#email").prop('readonly', 'readonly');
-					$("#iAmAttending").html('Thanks for RSVP!');
-					location.replace("#");
-					location.reload();
-				}, function (error) {
-					console.log('FAILED...', error);
-					$("#iAmAttending").html('Error sending RSVP...');
-				});
+			var gsd = window.sessionStorage.getItem("GSD");
+			if (gsd == null) {
+				$("#iAmAttending").html('Please reload and Sign-in before RSVP!');
+			}
+			else {
+				var dec = parseJwt(gsd);
+				$("#iAmAttending").html('Sending RSVP...');
+				emailjs.sendForm('service_f9h3uae', 'template_m0b48gw', '#iAmAttendingForm')
+					.then(function (response) {
+						console.log('SUCCESS!', response.status, response.text);
+						$("#name").prop('readonly', 'readonly');
+						$("#email").prop('readonly', 'readonly');
+						$("#iAmAttending").html('Thanks for RSVP!');
+						location.replace("#");
+						location.reload();
+					}, function (error) {
+						console.log('FAILED...', error);
+						$("#iAmAttending").html('Error sending RSVP...');
+					});
+			}
 		});
 	}
-
 	$(function () {
 		mobileMenuOutsideClick();
 		parallax();
