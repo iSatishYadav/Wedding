@@ -519,13 +519,13 @@
 				<div class="row animate-box">
 					<div class="col-md-10 col-md-offset-1">
 						<form class="form-inline" id="iAmAttendingForm">
-							<div class="col-md-4 col-sm-4">
+							<div class="col-md-4 col-sm-4" id="nameDiv">
 								<div class="form-group">
 									<label for="name" class="sr-only">Name</label>
 									<input type="name" name="name" class="form-control" id="name" placeholder="Name">
 								</div>
 							</div>
-							<div class="col-md-4 col-sm-4">
+							<div class="col-md-4 col-sm-4" id="emailDiv">
 								<div class="form-group">
 									<label for="email" class="sr-only">Email</label>
 									<input type="email" name="email" class="form-control" id="email"
@@ -631,10 +631,10 @@
 			var dec = parseJwt(data.credential);
 			$("#name").val(dec.name);
 			$("#name").prop("readonly", "readonly");
-			$("#name").css("display", "none");
+			// $("#nameDiv").css("display", "none");
 			$("#email").val(dec.email);
 			$("#email").prop("readonly", "readonly");
-			$("#email").css("display", "none");
+			// $("#emailDiv").css("display", "none");
 			$("#iAmAttending").html('RSVP here!');
 		}
 	</script>
