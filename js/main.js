@@ -1,7 +1,3 @@
-; (function () {
-
-	'use strict';
-
 	var mobileMenuOutsideClick = function () {
 
 		$(document).click(function (e) {
@@ -142,17 +138,40 @@
 
 
 	var testimonialCarousel = function () {
-		var owl = $('.owl-carousel-fullwidth');
-		owl.owlCarousel({
-			items: 1,
-			loop: true,
-			margin: 0,
-			responsiveClass: true,
-			nav: false,
-			dots: true,
-			smartSpeed: 800,
-			autoHeight: true,
-		});
+		fetch('https://api.npoint.io/1065daa799c627a87148')
+			.then(response => response.json())
+			.catch(e => console.error("FE", e))
+			.then(data => {
+				console.log("wishes", data);
+				var $child = $("#friendsWishes");
+				data.forEach(w => {	
+					$child.append(`<div class="item">
+						<div class="testimony-slide active text-center">
+							<figure>
+								<img src="${w.img !=null ? w.img : 'images/couple-3.jpg'}" alt="user">
+								</figure>
+								<span>${w.user}, via <a href="#" class="twitter">${w.via}</a></span>
+								<blockquote>
+									<p>"${w.wish}"</p>
+									</blockquote>
+									</div>
+									</div>`);
+				});
+				var owl = $('.owl-carousel-fullwidth');
+				owl.owlCarousel({
+					items: 1,
+					loop: true,
+					margin: 0,
+					responsiveClass: true,
+					nav: false,
+					dots: true,
+					smartSpeed: 800,
+					autoHeight: true,
+				});
+			})
+			.catch(e => console.error("FE", e))
+			;
+		
 	};
 
 
@@ -250,7 +269,8 @@
 			}
 		});
 	}
-	$(function () {
+
+	$(document).ready(function() {
 		mobileMenuOutsideClick();
 		parallax();
 		// offcanvasMenu();
@@ -264,6 +284,3 @@
 		counterWayPoint();
 		iAmAttending();
 	});
-
-
-}());
