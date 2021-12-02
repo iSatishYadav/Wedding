@@ -1,6 +1,42 @@
-[{
-  "name": "Prashant Sharma",
-  "via": "Twitter",
-  "wish": "Congratulations on your wedding!",
-  "img": null
-}]
+[
+ {
+	 "user": "Prashant Sharma",
+	 "wish": "Wishing you a lifetime of 
+	 love and happiness.",
+	 "via": "Instagram",
+	 "img": null
+ },
+ {
+	 "user": "Udit Yadav",
+	 "wish": "Wishing you a lifetime of 
+	 love and happiness.",
+	 "via": "Twitter",
+	 "img": null
+ },
+ {
+	 "user": "Siddhartha Duggirala",
+	 "wish": "Wishing you a lifetime of 
+	 love and happiness.",
+	 "via": "iMessage",
+	 "img": null
+ },
+ {
+	 "user": "Anushree Goyal",
+	 "wish": "Wishing you a lifetime of love and happiness.",
+	 "via": "Facebook",
+	 "img": 'https://youngindiabooks.com/sites/default/files/reviewer_pic_1875.jpg'
+ },
+ {
+	 "user": "Priyanka Yadav",
+	 "wish": "Wishing you a lifetime of 
+	 love and happiness.",
+	 "via": "WhatsApp",
+	 "img": null
+ },
+ {
+ "user": "Ankur Pannase",
+ "wish": "Wishing you a lifetime of love and happiness.",
+ "via": "Twitter",
+ "img": null
+ }
+]
