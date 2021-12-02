@@ -138,7 +138,7 @@
 
 
 	var testimonialCarousel = function () {
-		fetch('https://api.npoint.io/1065daa799c627a87148')
+		fetch('https://raw.githubusercontent.com/iSatishYadav/Wedding/master/assets/wishes.json')
 			.then(response => response.json())
 			.catch(e => console.error("FE", e))
 			.then(data => {
