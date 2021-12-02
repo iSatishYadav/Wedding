@@ -138,7 +138,7 @@
 
 
 	var testimonialCarousel = function () {
-		fetch('https://raw.githubusercontent.com/iSatishYadav/Wedding/master/assets/wishes.json')
+		fetch('assets/wishes.json')
 			.then(response => response.json())
 			.catch(e => console.error("FE", e))
 			.then(data => {
